@@ -2,18 +2,19 @@
 
 
 <main>
-    <section class="services">
-        <div class="service-container">
+    <section class="about-us">
+        
+        <div class="about-content">
         <?php
+        
             if( have_posts()) {
                 while( have_posts()) {
                     the_post();
-                    get_template_part( 'template-parts/content', 'archive');
+                    get_template_part( 'template-parts/content', 'page');
                     }
                 }
             ?>
         </div>
-        <?php the_posts_pagination() ?>
     </section>
     
 </main>

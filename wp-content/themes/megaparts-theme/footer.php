@@ -1,7 +1,6 @@
 
 
-<footer>
-    
+<footer> 
     <!-- Copyright information -->
     <div class="copyright">
         &copy; <?php echo date('Y'); ?> MegaParts by lightonray. All Rights Reserved.
@@ -15,6 +14,12 @@
         <a href="https://www.instagram.com/example">Instagram<i class="fab fa-instagram"></i></a>
         <!-- Add more social media icons as needed -->
     </div>
+    <?php dynamic_sidebar('footer-1')?>
 </footer>
+
+
+<?php wp_footer()?>
+</body>
+</html>
 
 

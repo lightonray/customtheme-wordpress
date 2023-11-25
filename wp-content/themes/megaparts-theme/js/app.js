@@ -1,12 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Your GSAP code here
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+jQuery(document).ready(function($) {
+    // Function to check if the clicked element is outside the sidebar
+    function closeSidebarOnClickOutside(event) {
+        var sidebar = $('.sidebar');
+        var openButton = $('.open-sidebar');
 
-    let smoother = ScrollSmoother.create({
-        wrapper: '#smooth-wrapper',
-        content: '#smooth-content',
-        smooth: 2 // Adjust smoothness value as needed
+        // If the clicked element is not the sidebar or the open button
+        if (!sidebar.is(event.target) && !openButton.is(event.target) && sidebar.has(event.target).length === 0) {
+            sidebar.removeClass('active');
+            console.log("Sidebar closed");
+        }
+    }
+
+    // Open sidebar on button click
+    $('.open-sidebar').on('click', function(e) {
+        e.stopPropagation(); // Stop propagation to prevent immediate closing
+        $('.sidebar').toggleClass('active');
+        console.log("Sidebar opened");
     });
 
-    console.log("Hello"); // Ensure that the script is running and see if "Hello" is logged in the console
+    // Close sidebar when clicking outside the sidebar
+    $(document).on('click', function(event) {
+        closeSidebarOnClickOutside(event);
+    });
+
+    // Prevent closing when clicking inside the sidebar
+    $('.sidebar').on('click', function(e) {
+        e.stopPropagation(); // Stop propagation
+    });
 });
